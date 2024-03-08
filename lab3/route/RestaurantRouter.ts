@@ -8,6 +8,17 @@ RestaurantRouter.get(
   '/',
   async (request: Request, response: Response): Promise<void> => {
     try {
+      const restaurantList = Restaurant.find({});
+
+      response.status(200).send(restaurantList);
+    } catch (error) {}
+  },
+);
+
+RestaurantRouter.get(
+  '/',
+  async (request: Request, response: Response): Promise<void> => {
+    try {
       const { sortBy } = request.query;
 
       const sortDirection =
